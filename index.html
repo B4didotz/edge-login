@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Login Page</title>
+    <title>Magic Link Login</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -43,42 +43,41 @@
         button:hover {
             background: #0056b3;
         }
-        .error {
-            color: red;
+        .message {
+            color: green;
             font-size: 14px;
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
     <div class="login-container">
-        <h2>Login</h2>
-        <input type="text" id="username" placeholder="Username">
-        <input type="password" id="password" placeholder="Password">
-        <button onclick="login()">Login</button>
-        <p id="error-message" class="error"></p>
+        <h2>Enter Your Email</h2>
+        <input type="email" id="user_email" placeholder="Your Email">
+        <button onclick="sendMagicLink()">Send Magic Link</button>
+        <p id="confirmation-message" class="message"></p>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script>
-        function login() {
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            const errorMessage = document.getElementById('error-message');
+        function sendMagicLink() {
+            emailjs.init("0R8ebrsF9UfsGSil6"); // Using Public Key as User ID
 
-            // Hardcoded credentials
-            const users = [
-                { username: "admin", password: "password123" },
-                { username: "user1", password: "mypassword" },
-                { username: "guest", password: "guest123" }
-            ];
+            var userEmail = document.getElementById('user_email').value;
+            var magicLink = "https://yourwebsite.com/main?token=" + btoa(userEmail); // Encode email for security
 
-            const isValidUser = users.some(user => user.username === username && user.password === password);
+            var templateParams = {
+                to_email: userEmail,
+                user_name: userEmail.split('@')[0], // Extract username from email
+                access_link: magicLink
+            };
 
-            if (isValidUser) {
-                alert("Login successful!");
-                window.location.href = "dashboard.html"; // Redirect to another page
-            } else {
-                errorMessage.textContent = "Invalid username or password.";
-            }
+            emailjs.send("service_cposg49", "template_3h1lcgt", templateParams)
+            .then(function(response) {
+                document.getElementById('confirmation-message').textContent = "Magic link sent! Check your email.";
+            }, function(error) {
+                alert("Failed to send email: " + error.text);
+            });
         }
     </script>
 </body>
