@@ -12,29 +12,10 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f0f2f5;
+            background: url('background.jpg') no-repeat center center/cover;
             flex-direction: column;
             overflow: hidden;
             position: relative;
-        }
-        .video-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -1;
-            overflow: hidden;
-        }
-        .video-background iframe {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 100vw;
-            height: 56.25vw; /* 16:9 Aspect Ratio */
-            min-height: 100vh;
-            min-width: 177.78vh; /* 16:9 Aspect Ratio */
-            transform: translate(-50%, -50%);
         }
         .logo {
             width: 150px;
@@ -82,12 +63,6 @@
     </style>
 </head>
 <body>
-    <div class="video-background">
-        <iframe src="https://player.vimeo.com/video/1060702891?background=1&autoplay=1&loop=1&muted=1" 
-            frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" allowfullscreen>
-        </iframe>
-    </div>
-
     <img src="edge-logo.png" alt="EDGE Logo" class="logo">
     <div class="login-container">
         <h2>Enter Your Email</h2>
@@ -114,9 +89,4 @@
             .then(function(response) {
                 document.getElementById('confirmation-message').textContent = "Magic link sent! Check your email.";
             }, function(error) {
-                alert("Failed to send email: " + error.text);
-            });
-        }
-    </script>
-</body>
-</html>
+                alert("Failed to s
