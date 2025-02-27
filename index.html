@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Magic Link Login</title>
+    <title>EDGE Login</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,6 +12,11 @@
             align-items: center;
             height: 100vh;
             background-color: #f0f2f5;
+            flex-direction: column;
+        }
+        .logo {
+            width: 150px;
+            margin-bottom: 20px;
         }
         .login-container {
             background: white;
@@ -51,6 +56,7 @@
     </style>
 </head>
 <body>
+    <img src="edge-logo.png" alt="EDGE Logo" class="logo">
     <div class="login-container">
         <h2>Enter Your Email</h2>
         <input type="email" id="user_email" placeholder="Your Email">
@@ -72,7 +78,7 @@
                 access_link: magicLink
             };
 
-            emailjs.send("service_cposg49", "template_3h1lcgt", templateParams)
+            emailjs.send("your_service_id", "your_template_id", templateParams)
             .then(function(response) {
                 document.getElementById('confirmation-message').textContent = "Magic link sent! Check your email.";
             }, function(error) {
