@@ -6,31 +6,26 @@
     <title>EDGE Login</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <style>
-        /* Make sure body and html fill the screen */
+        /* Ensure full height and width */
         html, body {
             height: 100%;
             margin: 0;
+            padding: 0;
             font-family: Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            overflow: hidden;
             position: relative;
         }
-        
-        /* Background Image that fully adjusts to screen size */
-        body::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('background.jpg') no-repeat center center;
-            background-size: cover; /* Ensures full-screen coverage */
-            filter: brightness(0.8); /* Optional: Slight dim effect */
-            z-index: -1;
+
+        /* Fix Chrome Background Scaling Issue */
+        body {
+            background-image: url('background.jpg'); /* Ensure this file is correctly uploaded */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed; /* Prevents Chrome's zoom issue */
         }
 
         .logo {
@@ -82,8 +77,11 @@
             margin-top: 10px;
         }
 
-        /* Responsive Design for Small Screens */
+        /* Fix for Mobile Devices */
         @media (max-width: 768px) {
+            body {
+                background-size: contain; /* Ensures full visibility on smaller screens */
+            }
             .logo {
                 width: 120px;
             }
