@@ -83,20 +83,10 @@
 </head>
 <body>
     <div class="video-background">
-        <div id="vimeo-player"></div>
+        <iframe src="https://player.vimeo.com/video/1060702891?background=1&autoplay=1&loop=1&muted=1" 
+            frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" allowfullscreen>
+        </iframe>
     </div>
-
-    <script src="https://player.vimeo.com/api/player.js"></script>
-    <script>
-        var options = {
-            id: 1060702891,
-            background: true,
-            autoplay: true,
-            loop: true,
-            muted: true
-        };
-        var player = new Vimeo.Player('vimeo-player', options);
-    </script>
 
     <img src="edge-logo.png" alt="EDGE Logo" class="logo">
     <div class="login-container">
