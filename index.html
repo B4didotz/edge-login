@@ -20,13 +20,16 @@
         }
 
         /* Fix Chrome Background Scaling Issue */
-        body {
-            background-image: url('background.jpg'); /* Ensure this file is correctly uploaded */
+       body {
+            background-image: url('background.jpg');
             background-position: center;
             background-repeat: no-repeat;
-            background-size: cover;
-            background-attachment: fixed; /* Prevents Chrome's zoom issue */
+            background-size: cover; /* Ensures full screen coverage */
+            background-attachment: fixed;
+            width: 100vw; /* Forces full width */
+            height: 100vh; /* Forces full height */
         }
+
 
         .logo {
             width: 150px;
