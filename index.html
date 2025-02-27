@@ -12,7 +12,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: url('background.png') no-repeat center center/cover;
+            background: url('https://B4didotz.github.io/edge-login/background.jpg') no-repeat center center/cover;
             flex-direction: column;
             overflow: hidden;
             position: relative;
@@ -89,4 +89,9 @@
             .then(function(response) {
                 document.getElementById('confirmation-message').textContent = "Magic link sent! Check your email.";
             }, function(error) {
-                alert("Failed to s
+                alert("Failed to send email: " + error.text);
+            });
+        }
+    </script>
+</body>
+</html>
