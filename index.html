@@ -51,7 +51,7 @@
 
         /* Left Side - Video (Bigger but Flexible) */
         .video-container {
-            flex: 1.5; /* Makes it larger than the right container */
+            flex: 1.5;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -65,11 +65,16 @@
             border-radius: 10px;
         }
 
-        /* Right Side - Login Form (Smaller but Balanced) */
+        /* Right Side - Login Form (Fixing Button and Input Placement) */
         .login-container {
-            flex: 1; /* Keeps it slightly smaller than the video */
+            flex: 1;
             max-width: 500px;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 300px;
+            gap: 15px; /* Ensures even spacing */
         }
 
         .login-container h1 {
@@ -92,7 +97,7 @@
             background: #222;
             color: white;
             font-size: 1rem;
-            margin-bottom: 15px;
+            align-self: center;
         }
 
         .get-started {
@@ -105,6 +110,7 @@
             border-radius: 50px;
             cursor: pointer;
             transition: 0.3s ease;
+            align-self: center;
         }
 
         .get-started:hover {
@@ -120,7 +126,7 @@
         /* Responsive Tweaks */
         @media (max-width: 1024px) {
             .video-container {
-                flex: 1.2; /* Adjusts dynamically */
+                flex: 1.2;
             }
         }
 
@@ -166,11 +172,11 @@
             emailjs.init("0R8ebrsF9UfsGSil6"); // Public Key
 
             var userEmail = document.getElementById('user_email').value;
-            var magicLink = "https://yourwebsite.com/main?token=" + btoa(userEmail); // Encode email for security
+            var magicLink = "https://yourwebsite.com/main?token=" + btoa(userEmail);
 
             var templateParams = {
                 to_email: userEmail,
-                user_name: userEmail.split('@')[0], // Extract username from email
+                user_name: userEmail.split('@')[0],
                 access_link: magicLink
             };
 
