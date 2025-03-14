@@ -175,16 +175,16 @@
     <!-- EmailJS Script -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script>
-        const allowedEmails = ["johna@rentsolutions.com", "steveorents@gmail.com", "steveo@rentsolutions.com", "steveo@mymsolutionsinc.com", ].map(email => email.toLowerCase());
-        
+        const allowedEmails = ["user1@example.com", "user2@example.com", "user3@example.com"];
+
         function sendMagicLink() {
             emailjs.init("0R8ebrsF9UfsGSil6"); // Public Key
 
-            var userEmail = document.getElementById('user_email').value;
+            var userEmail = document.getElementById('user_email').value.trim().toLowerCase();
             var errorMessage = document.getElementById('error-message');
             var confirmationMessage = document.getElementById('confirmation-message');
 
-            if (!allowedEmails.includes(userEmail)) {
+            if (!allowedEmails.some(email => email.toLowerCase() === userEmail)) {
                 errorMessage.textContent = "Access denied. Your email is not on the approved list.";
                 confirmationMessage.textContent = "";
                 return;
