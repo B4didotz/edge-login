@@ -123,6 +123,12 @@
             color: lightgreen;
         }
 
+        .error-message {
+            color: red;
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+
         /* Responsive Tweaks */
         @media (max-width: 1024px) {
             .video-container {
@@ -162,16 +168,28 @@
             <input type="email" id="user_email" placeholder="Your Email">
             <button class="get-started" onclick="sendMagicLink()">Get Started</button>
             <p id="confirmation-message" class="message"></p>
+            <p id="error-message" class="error-message"></p>
         </div>
     </div>
 
     <!-- EmailJS Script -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script>
+        const allowedEmails = ["user1@example.com", "user2@example.com", "user3@example.com"];
+
         function sendMagicLink() {
             emailjs.init("0R8ebrsF9UfsGSil6"); // Public Key
 
             var userEmail = document.getElementById('user_email').value;
+            var errorMessage = document.getElementById('error-message');
+            var confirmationMessage = document.getElementById('confirmation-message');
+
+            if (!allowedEmails.includes(userEmail)) {
+                errorMessage.textContent = "Access denied. Your email is not on the approved list.";
+                confirmationMessage.textContent = "";
+                return;
+            }
+
             var magicLink = "https://yourwebsite.com/main?token=" + btoa(userEmail);
 
             var templateParams = {
@@ -182,7 +200,8 @@
 
             emailjs.send("service_cposg49", "template_3h1lcgt", templateParams)
             .then(function(response) {
-                document.getElementById('confirmation-message').textContent = "Magic link sent! Check your email.";
+                confirmationMessage.textContent = "Magic link sent! Check your email.";
+                errorMessage.textContent = "";
             }, function(error) {
                 alert("Failed to send email: " + error.text);
             });
