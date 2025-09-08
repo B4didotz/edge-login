@@ -178,7 +178,7 @@
         const allowedEmails = ["jonathankrystle@gmail.com", "steveorents@gmail.com", "steveo@rentsolutions.com", "steveo@mymsolutionsinc.com", "johna@rentsolutions.com", "mikea@rentsolutions.com", "ts.geek04@gmail.com", "sam.welsh@acquisition.com"];
 
         function sendMagicLink() {
-            emailjs.init("0R8ebrsF9UfsGSil6"); // Public Key
+            emailjs.init("EEKLE9rVNKiMtrV_y"); // Public Key
 
             var userEmail = document.getElementById('user_email').value.trim().toLowerCase();
             var errorMessage = document.getElementById('error-message');
@@ -198,7 +198,7 @@
                 access_link: magicLink
             };
 
-            emailjs.send("service_cposg49", "template_3h1lcgt", templateParams)
+            emailjs.send("service_sx1lka2", "template_3h1lcgt", templateParams)
             .then(function(response) {
                 confirmationMessage.textContent = "Magic link sent! Check your email.";
                 errorMessage.textContent = "";
@@ -209,3 +209,4 @@
     </script>
 </body>
 </html>
+
